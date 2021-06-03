@@ -1,0 +1,20 @@
+<%= form_with(model: @message, local: true ,url: choose_new_or_edit ) do |form| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @message.errors.count %> errors occurred.</h2>
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="message_content">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <br>
+  <%= form.submit %>
+<% end %>
+<%= link_to "Return to List of tweets", messages_path %>
